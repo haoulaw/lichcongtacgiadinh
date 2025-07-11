@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin - Cập nhật lịch</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.0/papaparse.min.js"></script>
+</head>
+<body>
+    <div class="container" id="login-container">
+        <h1>Đăng nhập Admin</h1>
+        <input type="text" id="username" placeholder="Tài khoản">
+        <input type="password" id="password" placeholder="Mật khẩu">
+        <button onclick="login()">Đăng nhập</button>
+        <p id="login-error" class="error"></p>
+    </div>
+
+    <div class="container" id="upload-container" style="display:none;">
+        <h1>Cập nhật lịch công tác</h1>
+        <p>Tải lên file lịch công tác mới (định dạng .csv).</p>
+        <p>Bạn có thể dùng <a href="template.csv" download>file mẫu này</a>.</p>
+        
+        <label for="tuanSoInput">Tuần số:</label>
+        <input type="text" id="tuanSoInput" placeholder="Ví dụ: 28 (từ 07/07 đến 13/07)">
+        
+        <input type="file" id="csvFile" accept=".csv">
+        <button onclick="handleUpload()">Tải lên và Cập nhật</button>
+        <div id="status"></div>
+    </div>
+    
+    <script src="admin.js"></script>
+</body>
+</html>
