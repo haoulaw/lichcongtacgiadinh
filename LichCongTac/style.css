@@ -1,0 +1,117 @@
+:root {
+    --primary-color: #0056b3;
+    --secondary-color: #007bff;
+    --highlight-color: #eaf3ff;
+    --border-color: #ddd;
+    --text-color: #333;
+    --bg-color: #f8f9fa;
+}
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    margin: 0;
+    padding: 15px;
+}
+.container {
+    max-width: 1200px;
+    margin: auto;
+    background: #fff;
+    padding: 20px 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+h1 { color: var(--primary-color); text-align: center; }
+h2 { color: var(--secondary-color); text-align: center; margin-top: -10px; font-weight: 400; }
+.toolbar {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+#searchInput {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 1em;
+}
+#printButton {
+    padding: 10px 20px;
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+#printButton:hover { background-color: #5a6268; }
+.table-wrapper { overflow-x: auto; }
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+th, td {
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    text-align: left;
+}
+th {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 600;
+}
+tr:nth-child(even) { background-color: #f2f2f2; }
+tr:hover { background-color: #e9ecef; }
+.current-day { background-color: var(--highlight-color) !important; font-weight: bold; }
+.meta-info { text-align: right; color: #666; font-size: 0.85em; margin-top: 15px; }
+.calendar-button { font-size: 1.5em; text-decoration: none; }
+.error-cell { color: #dc3545; text-align: center; font-weight: bold; }
+
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+    table, thead, tbody, th, td, tr { display: block; }
+    thead tr { position: absolute; top: -9999px; left: -9999px; }
+    tr { border: 1px solid #ccc; margin-bottom: 15px; }
+    td {
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50%;
+        text-align: right;
+    }
+    td:before {
+        position: absolute;
+        top: 12px;
+        left: 15px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align: left;
+        font-weight: bold;
+        content: attr(data-label);
+    }
+    .toolbar { flex-direction: column; }
+}
+
+/* Style cho nút Zalo */
+.zalo-button img {
+    transition: transform 0.2s ease-in-out;
+}
+
+.zalo-button:hover img {
+    transform: scale(1.2);
+}
+
+/* Print Styles */
+@media print {
+    body { padding: 0; background-color: #fff; }
+    .container { box-shadow: none; border: none; padding: 0; }
+    .toolbar, .no-print, .meta-info { display: none; }
+    h1, h2 { text-align: left; }
+    table { margin-top: 0; }
+    tr { page-break-inside: avoid; }
+    a { text-decoration: none; color: inherit; }
+}
